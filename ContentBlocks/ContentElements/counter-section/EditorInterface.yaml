@@ -1,0 +1,26 @@
+name: hightech/counter
+title: HighTech – Counter Content Element
+description: Displays animated counters with numbers and labels.
+
+prefixFields: false
+
+fields:
+  - identifier: counterItems
+    type: Collection
+    label: 'Counter Items'
+    description: 'Add counter entries with number and label.'
+    fields:
+      - identifier: counterData
+        type: Palette
+        label: 'Counter Data'
+        fields:
+          - identifier: counterNumber
+            type: Number
+            format: integer
+            label: 'Number'
+            description: 'Enter the numeric value to display.'
+
+          - identifier: counterLabel
+            type: Text
+            label: 'Label'
+            description: 'Enter a short label for this counter (e.g. Clients, Projects).'

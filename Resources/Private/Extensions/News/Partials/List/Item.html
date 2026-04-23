@@ -1,0 +1,114 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<n:excludeDisplayedNews newsItem="{newsItem}" />
+
+<div class="col-lg-6 col-xl-4 wow fadeIn" data-wow-delay=".3s">
+    <div class="blog-item position-relative bg-light rounded">
+
+        <!-- Image -->
+        <f:if condition="{newsItem.mediaPreviews}">
+            <f:then>
+                <n:link newsItem="{newsItem}" settings="{settings}">
+                    <f:image image="{newsItem.mediaPreviews.0}"
+                             class="img-fluid w-100 rounded-top"
+                             alt="{newsItem.title}" width="299" />
+                </n:link>
+            </f:then>
+        </f:if>
+
+        <!-- Category -->
+        <f:if condition="{newsItem.title}">
+            <span class="position-absolute px-4 py-3 bg-primary text-white rounded"
+                  style="top: -28px; right: 20px;">
+                {newsItem.title}
+            </span>
+        </f:if>
+
+        <!-- Buttons -->
+        <div class="blog-btn d-flex justify-content-between position-relative px-3" style="margin-top: -75px;">
+            <div class="blog-icon btn btn-secondary px-3 rounded-pill my-auto">
+                <n:link newsItem="{newsItem}" settings="{settings}" class="btn text-white">
+                    Read More
+                </n:link>
+            </div>
+
+            <div class="blog-btn-icon btn btn-secondary px-4 py-3 rounded-pill">
+                <div class="blog-icon-1">
+                    <p class="text-white px-2">
+                        Share <i class="fa fa-arrow-right ms-3"></i>
+                    </p>
+                </div>
+                <div class="blog-icon-2">
+                    <n:link newsItem="{newsItem}" settings="{settings}" absolute="1" as="newsUrl">
+					    <!-- Facebook -->
+					    <a href="https://www.facebook.com/sharer/sharer.php?u={newsUrl -> f:format.urlencode()}"
+					       class="btn me-1"
+					       target="_blank"
+					       rel="noopener noreferrer">
+					        <i class="fab fa-facebook-f text-white"></i>
+					    </a>
+					
+					    <!-- Twitter -->
+					    <a href="https://twitter.com/intent/tweet?url={newsUrl -> f:format.urlencode()}&text={newsItem.title -> f:format.urlencode()}"
+					       class="btn me-1"
+					       target="_blank"
+					       rel="noopener noreferrer">
+					        <i class="fab fa-twitter text-white"></i>
+					    </a>
+					
+					    <a href="https://www.linkedin.com/sharing/share-offsite/?url={newsUrl -> f:format.urlencode()}"
+						   class="btn me-1"
+						   target="_blank"
+						   rel="noopener noreferrer">
+						    <i class="fab fa-linkedin-in text-white"></i>
+						</a>
+					</n:link>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Content -->
+        <div class="blog-content text-center position-relative px-3" style="margin-top: -25px;">
+
+            <!-- Author Image -->
+        	<f:if condition="{newsItem.falRelatedFiles}">
+        	    <f:then>
+        	        <n:link newsItem="{newsItem}" settings="{settings}">
+        	            <f:image image="{newsItem.falRelatedFiles.0}"
+        	                     class="img-fluid rounded-circle border border-4 border-white mb-3"
+        	                     alt="{newsItem.title}" width="108"/>
+        	        </n:link>
+        	    </f:then>
+        	</f:if>
+
+            <!-- Author -->
+            <f:if condition="{newsItem.author}">
+                <h5>By {newsItem.author}</h5>
+            </f:if>
+
+            <!-- Date -->
+            <span class="text-secondary">
+                <f:format.date format="d F Y">{newsItem.datetime}</f:format.date>
+            </span>
+
+            <!-- Teaser -->
+            <p class="py-2">
+                <f:if condition="{newsItem.teaser}">
+                    <f:then>
+                        {newsItem.teaser -> f:format.crop(maxCharacters: 120)}
+                    </f:then>
+                    <f:else>
+                        {newsItem.bodytext -> f:format.crop(maxCharacters: 120)}
+                    </f:else>
+                </f:if>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+</html>

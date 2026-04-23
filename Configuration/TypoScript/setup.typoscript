@@ -1,0 +1,27 @@
+# Includes Page Configuration
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:at_hightech/Configuration/TypoScript/Page" extensions="typoscript">
+
+# Include Form Configuration
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:at_hightech/Configuration/TypoScript/Extensions/Form/" extensions="typoscript">
+
+plugin.tx_news {
+  view {
+    templateRootPaths {
+      10 = EXT:at_hightech/Resources/Private/Extensions/News/Templates/
+    }
+    partialRootPaths {
+      10 = EXT:at_hightech/Resources/Private/Extensions/News/Partials/
+    }
+    layoutRootPaths {
+      10 = EXT:at_hightech/Resources/Private/Extensions/News/Layouts/
+    }
+  }
+}
+
+plugin.tx_indexedsearch {
+  view {
+    templateRootPaths.10 = EXT:at_hightech/Resources/Private/Extensions/IndexedSearch/Templates/
+    partialRootPaths.10 = EXT:at_hightech/Resources/Private/Extensions/IndexedSearch/Partials/
+    layoutRootPaths.10 = EXT:at_hightech/Resources/Private/Extensions/IndexedSearch/Layouts/
+  }
+}

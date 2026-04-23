@@ -1,0 +1,47 @@
+name: hightech/contact
+title: HighTech – Contact Content Element
+description: Displays contact information, details, and a map section.
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: subheader
+    useExistingField: true
+
+  - identifier: details
+    type: Textarea
+    label: 'Contact Details'
+    description: 'Enter general contact information such as address, phone number, or email.'
+    enableRichtext: true
+    richtextConfiguration: full
+
+  - identifier: collection
+    type: Collection
+    label: 'Contact Items'
+    description: 'Add individual contact blocks such as office locations or departments.'
+    fields:
+      
+      - identifier: image
+        type: File
+        label: 'Contact Image'
+        description: 'Upload an image representing this contact item (e.g., office, team, or icon).'
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types
+
+      - identifier: description
+        type: Textarea
+        label: 'Contact Description'
+        description: 'Enter details for this contact item (e.g., address, phone, working hours).'
+        enableRichtext: true
+        richtextConfiguration: full
+
+  - identifier: map
+    type: Textarea
+    label: 'Map Embed Code'
+    description: 'Paste Google Maps iframe or embed code to display the location.'
+    enableRichtext: true
+    richtextConfiguration: full

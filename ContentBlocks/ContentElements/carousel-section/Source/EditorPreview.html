@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
+      data-namespace-typo3-fluid="true">
+<style>
+.carousel-caption {height: 100%;display: flex;align-items: center;justify-content: center;z-index: 1;}.carousel-item::after {content: "";width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: rgba(0, 0, 0, .6);}.text-white {color: #fff !important;}.text-secondary {color: #26d48c !important;}.display-1 {font-weight: 700;line-height: 1.2;font-size: 4rem;}.carousel-caption .carousel-content a.carousel-content-btn2 {background: #1842b6;color: #fff;opacity: 1;border: 0;border-radius: 20px;}.carousel-caption .carousel-content a.carousel-content-btn1 {background: #26d48c;color: #000;opacity: 1;border: 0;border-radius: 20px;}
+</style>
+<f:if condition="{data.collection}">
+
+    <!-- Carousel Start -->
+    <div class="container-fluid px-0">
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Slides -->
+            <div class="carousel-inner" role="listbox">
+                <f:for each="{data.collection}" as="item" iteration="iter">
+
+                    <!-- Only render slide if it has content -->
+                    <f:if condition="{item.image.0} || {item.description}">
+                        <div class="carousel-item {f:if(condition: iter.isFirst, then: 'active')}">
+
+                            <!-- Image -->
+                            <f:if condition="{item.image.0}">
+                                <f:image image="{item.image.0}" class="img-fluid" alt="Slide Image" />
+                            </f:if>
+
+                            <!-- Content -->
+                            <f:if condition="{item.description}">
+                                <div class="carousel-caption">
+                                    <div class="container carousel-content">
+                                        <f:format.raw>{item.description}</f:format.raw>
+                                    </div>
+                                </div>
+                            </f:if>
+
+                        </div>
+                    </f:if>
+
+                </f:for>
+            </div>
+
+            <!-- Controls -->
+            <f:if condition="{data.collection -> f:count()} > 1">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </f:if>
+
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+</f:if>
+
+</html>

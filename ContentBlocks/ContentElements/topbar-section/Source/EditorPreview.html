@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/9.3.2/schema.xsd"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<style>
+.top-info {color: #25d48c;}
+</style>
+<f:if condition="{data.image} || {data.description} || {data.social_media}">
+<div class="container-fluid bg-dark py-2 d-none d-md-flex">
+    <div class="container">
+        <div class="d-flex justify-content-between topbar">
+            <f:if condition="{data.image}">
+                <div class="top-info">
+                    <f:for each="{data.image}" as="file">
+                        <f:if condition="{file.description} || {file.link}">
+                            <small class="me-3 text-white-50">
+                                <f:if condition="{file.link}">
+                                    <f:then>
+                                        <f:link.typolink parameter="{file.link}" additionalAttributes="{target: '_blank'}">
+                                            <f:image image="{file}" style="width:14px;height:14px;" alt="{file.alternative}" class="me-2" />
+                                        </f:link.typolink>
+                                        {file.description}
+                                    </f:then>
+                                    <f:else>
+                                        <f:image image="{file}" style="width:14px;height:14px;" alt="{file.alternative}" class="me-2" />
+                                        {file.description}
+                                    </f:else>
+                                </f:if>
+                            </small>
+                        </f:if>
+                    </f:for>
+                </div>
+            </f:if>
+
+            <f:if condition="{data.description}">
+                <div id="note" class="text-secondary d-none d-xl-flex">
+                    <small>
+                        <f:format.stripTags>
+                            <f:format.raw>{data.description}</f:format.raw>
+                        </f:format.stripTags>
+                    </small>
+                </div>
+            </f:if>
+
+            <f:if condition="{data.social_media}">
+                <div class="top-link">
+                    <f:for each="{data.social_media}" as="item">
+                        <f:if condition="{item.social_media_icons.0}">
+                            <f:if condition="{item.social_media_icons.0.link}">
+                                <f:then>
+                                    <a href="{item.social_media_icons.0.link}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="bg-light nav-fill btn btn-sm-square rounded-circle">
+
+                                        <f:image image="{item.social_media_icons.0}" style="width:16px;height:16px;" alt="icon" />
+
+                                    </a>
+                                </f:then>
+                                <f:else>
+                                    <div class="bg-light nav-fill btn btn-sm-square rounded-circle d-flex align-items-center justify-content-center">
+
+                                        <f:image image="{item.social_media_icons.0}" style="width:16px;height:16px;" alt="icon" />
+
+                                    </div>
+                                </f:else>
+                            </f:if>
+                        </f:if>
+                    </f:for>
+                </div>
+            </f:if>
+        </div>
+    </div>
+</div>
+</f:if>
+
+</html>

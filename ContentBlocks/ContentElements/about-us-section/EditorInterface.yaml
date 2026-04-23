@@ -1,0 +1,35 @@
+name: hightech/about-us
+title: HighTech – About Us Content Element
+description: Displays an about section with image and text content.
+
+prefixFields: false
+
+fields:
+
+  - identifier: aboutImage
+    type: File
+    label: 'About Image'
+    description: 'Upload the main image for the about section.'
+    extendedPalette: false
+    minitems: 1
+    maxitems: 2
+    allowed: common-image-types
+
+  - identifier: layoutPosition
+    type: Select
+    renderType: selectSingle
+    label: 'Image Position'
+    description: 'Choose whether the image appears on the left or right side.'
+    default: 'left'
+    items:
+      - label: 'Left'
+        value: left
+      - label: 'Right'
+        value: right
+
+  - identifier: description
+    type: Textarea
+    label: 'About Description'
+    description: 'Enter the text content for the about section.'
+    enableRichtext: true
+    richtextConfiguration: default

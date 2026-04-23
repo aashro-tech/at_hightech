@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/9.3.2/schema.xsd"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<style>
+.btn-light {background-color: #f8f8f9;border-color: #f8f8f9;}.hightech-link img{filter: brightness(0) saturate(100%) invert(23%) sepia(83%) saturate(2433%) hue-rotate(214deg) brightness(88%) contrast(95%);}.bg-dark a{pointer-events: none;}.bg-dark {background-color: #000103 !important;padding: 10px;}
+</style>
+<div class="bg-dark text-white">
+<!-- Description -->
+<f:if condition="{data.description}">
+    <f:format.raw>{data.description}</f:format.raw>
+</f:if>
+
+<!-- Social Icons -->
+<f:if condition="{data.social_media}">
+    <div class="d-flex hightech-link">
+
+        <f:for each="{data.social_media}" as="item">
+
+            <!-- Only render if icon exists -->
+            <f:if condition="{item.social_media_icons.0}">
+
+                <!-- With link -->
+                <f:if condition="{item.social_media_icons.0.link}">
+                    <f:then>
+                        <f:link.typolink parameter="{item.social_media_icons.0.link}"
+                                         class="btn-light nav-fill btn btn-square rounded-circle me-2"
+                                         additionalAttributes="{target: '_blank'}">
+
+                            <f:image image="{item.social_media_icons.0}" class="img-fluid" alt="" width="15"/>
+
+                        </f:link.typolink>
+                    </f:then>
+
+                    <!-- Without link -->
+                    <f:else>
+                        <div class="btn-light nav-fill btn btn-square rounded-circle me-2 d-flex align-items-center justify-content-center">
+                            <f:image image="{item.social_media_icons.0}" class="img-fluid" alt="" width="15"/>
+                        </div>
+                    </f:else>
+                </f:if>
+
+            </f:if>
+
+        </f:for>
+
+    </div>
+</f:if>
+</div>
+</html>

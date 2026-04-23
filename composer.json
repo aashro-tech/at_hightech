@@ -1,0 +1,39 @@
+{
+    "name": "aashro/at-hightech",
+    "type": "typo3-cms-extension",
+    "description": "HighTech empowers businesses with advanced TYPO3 solutions, combining performance, flexibility, and modern design.",
+    "authors": [
+        {
+            "name": "Aashro Tech",
+            "email": "info@aashro.com",
+            "role": "Developer",
+            "homepage": "https://www.aashro.com/"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^12.4",
+        "typo3/cms-indexed-search": "^12.4",
+        "friendsoftypo3/content-blocks": "^0.7.18",
+        "georgringer/news": "^12.3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aashro\\AtHightech\\": "Classes"
+        }
+    },
+    "replace": {
+        "typo3-ter/at-hightech": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/public",
+            "extension-key": "at_hightech"
+        }
+    }
+}

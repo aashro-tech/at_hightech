@@ -1,0 +1,222 @@
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(/fileadmin/at_hightech/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+.contact-detail::before {
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(/fileadmin/at_hightech/background.jpg) center center no-repeat;
+}
+
+.services-content-icon .img-fluid.mb-4 {
+  transition: all 0.3s ease;
+}
+
+/* #26d48c  -- green Secondary */
+.services-item:hover .img-fluid.mb-4, footer img, .top-info img {
+  filter: brightness(0) saturate(100%) invert(63%) sepia(68%) saturate(435%) hue-rotate(105deg) brightness(95%) contrast(90%);
+}
+
+.contact-map {
+  line-height: 0;
+}
+
+/* #1842b6  -- blue Primary */
+footer .hightech-link img, .top-link img{
+  filter: brightness(0) saturate(100%) invert(23%) sepia(83%) saturate(2433%) hue-rotate(214deg) brightness(88%) contrast(95%);
+}
+
+footer {
+  color: #f8f8f9;
+}
+footer .copyright{
+    display: flex;
+    justify-content: space-between;
+}
+/* Search page style START */
+/* =========================
+   CONTAINER
+========================= */
+.frame-type-indexedsearch_pi2 {
+    padding: 50px 0;
+    background: #fff;
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+fieldset {
+    display: flex;
+}
+.tx-indexedsearch-searchbox {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.tx-indexedsearch-form {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+/* Input */
+.tx-indexedsearch-searchbox-sword {
+    flex: 1;
+    height: 52px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0 15px;
+    font-size: 15px;
+    background: #fff;
+}
+
+/* Button */
+.tx-indexedsearch-searchbox-button {
+    height: 52px;
+    padding: 0 22px;
+    border-radius: 8px;
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 500;
+}
+
+.tx-indexedsearch-searchbox-button:hover {
+    background: #0b5ed7;
+}
+
+/* Remove junk */
+.tx-indexedsearch-searchbox legend,
+.tx-indexedsearch-searchbox label {
+    display: none;
+}
+
+/* =========================
+   RESULT HEADER
+========================= */
+.tx-indexedsearch-info-sword {
+    max-width: 800px;
+    margin: 0 auto 10px;
+    font-size: 18px;
+}
+
+.tx-indexedsearch-info-sword-word {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.tx-indexedsearch-browsebox {
+    max-width: 800px;
+    margin: 0 auto 25px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* =========================
+   RESULT LIST
+========================= */
+
+.tx-indexedsearch-res {
+  max-width: 800px;
+  margin: 0 auto 25px;
+  padding: 20px;
+  background-color: #fff;
+  border-left: 5px solid #26d48c;
+  box-shadow: 0 0 10px silver;
+  border-radius: 20px;
+}
+
+/* Title */
+.tx-indexedsearch-title a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.tx-indexedsearch-title a:hover {
+    text-decoration: underline;
+}
+
+/* Score */
+.tx-indexedsearch-percent {
+    font-size: 13px;
+    color: #6c757d;
+    margin-left: 8px;
+}
+
+/* Description */
+.tx-indexedsearch-description {
+    font-size: 14px;
+    color: #444;
+    margin-top: 5px;
+    line-height: 1.6;
+}
+
+/* Highlight */
+.tx-indexedsearch-redMarkup {
+    background: #ffe066;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+/* Meta */
+.tx-indexedsearch-info {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    gap: 5px;
+}
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+.tx-indexedsearch-sectionhead h2 {
+    max-width: 800px;
+    margin: 40px auto 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.tx-indexedsearch-browsebox ul {
+    display: flex;
+    gap: 6px;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+}
+
+.tx-indexedsearch-browsebox li a {
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.tx-indexedsearch-browsebox li strong a {
+    background: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+    .tx-indexedsearch-form {
+        flex-direction: column;
+    }
+
+    .tx-indexedsearch-searchbox-button {
+        width: 100%;
+    }
+    footer .copyright{
+        flex-direction: column;
+    }
+}
+/* Search page style END */

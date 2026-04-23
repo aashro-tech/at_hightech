@@ -1,0 +1,160 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<f:section name="content">
+
+<f:if condition="{newsItem}">
+<f:then>
+
+<!-- HERO START -->
+<div class="container-fluid py-5 bg-primary hero-header position-relative">
+    <div class="container text-center text-white">
+
+        <h1 class="display-4 fw-bold text-white mb-3">
+            {newsItem.title}
+        </h1>
+
+        <p class="mb-0">
+            By <strong>{newsItem.author}</strong> |
+            <f:format.date format="d M Y">{newsItem.datetime}</f:format.date>
+        </p>
+
+    </div>
+</div>
+<!-- HERO END -->
+
+
+<!-- IMAGE -->
+<f:if condition="{newsItem.mediaPreviews}">
+    <div class="container text-center mt-n5 mb-5">
+        <f:image image="{newsItem.mediaPreviews.0}"
+                 class="img-fluid rounded shadow-lg"
+                 style="max-height:450px; object-fit:cover;"
+                 alt="{newsItem.title}" />
+    </div>
+</f:if>
+
+
+<!-- CONTENT -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="bg-light p-5 rounded shadow">
+
+                <!-- TEASER -->
+                <f:if condition="{newsItem.teaser}">
+                    <div class="mb-4 fs-5 text-dark border-start border-4 border-primary ps-3">
+                        <f:format.html>{newsItem.teaser}</f:format.html>
+                    </div>
+                </f:if>
+
+                <!-- BODY -->
+                <div class="news-text-wrap">
+                    <f:format.html>{newsItem.bodytext}</f:format.html>
+                </div>
+
+            </div>
+
+            <!-- SHARE BUTTONS -->
+            <div class="d-flex justify-content-center mt-5 gap-3 flex-wrap">
+
+                <n:link newsItem="{newsItem}" settings="{settings}" absolute="1" as="newsUrl">
+
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={newsUrl -> f:format.urlencode()}"
+                       class="btn btn-primary rounded-pill px-4"
+                       target="_blank">
+                        <i class="fab fa-facebook-f me-2"></i> Share
+                    </a>
+
+                    <a href="https://twitter.com/intent/tweet?url={newsUrl -> f:format.urlencode()}&text={newsItem.title -> f:format.urlencode()}"
+                       class="btn btn-secondary rounded-pill px-4"
+                       target="_blank">
+                        <i class="fab fa-twitter me-2"></i> Tweet
+                    </a>
+
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={newsUrl -> f:format.urlencode()}"
+                       class="btn btn-secondary rounded-pill px-4"
+                       target="_blank">
+                        <i class="fab fa-linkedin-in me-2"></i> LinkedIn
+                    </a>
+
+                </n:link>
+
+            </div>
+
+            <!-- BACK -->
+            <div class="text-center mt-5">
+                <f:link.page pageUid="{settings.backPid}" class="btn btn-outline-primary rounded-pill px-5">
+                    ← Back to Blog
+                </f:link.page>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- RELATED NEWS -->
+<f:if condition="{newsItem.related}">
+    <div class="container py-5">
+
+        <div class="text-center mx-auto pb-5" style="max-width:600px;">
+            <h5 class="text-primary">Related News</h5>
+            <h2 class="fw-bold">You May Also Like</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <f:for each="{newsItem.related}" as="related">
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="blog-item bg-light rounded shadow-sm h-100">
+
+                        <!-- IMAGE -->
+                        <f:if condition="{related.mediaPreviews}">
+                            <n:link newsItem="{related}" settings="{settings}">
+                                <f:image image="{related.mediaPreviews.0}"
+                                         class="img-fluid w-100 rounded-top"
+                                         alt="{related.title}" />
+                            </n:link>
+                        </f:if>
+
+                        <!-- CONTENT -->
+                        <div class="p-4 text-center">
+
+                            <h5 class="mb-2">
+                                <n:link newsItem="{related}" settings="{settings}">
+                                    {related.title}
+                                </n:link>
+                            </h5>
+
+                            <span class="text-muted d-block mb-2">
+                                <f:format.date format="d M Y">{related.datetime}</f:format.date>
+                            </span>
+
+                            <p>
+                                {related.teaser -> f:format.crop(maxCharacters: 90)}
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </f:for>
+
+        </div>
+    </div>
+</f:if>
+
+</f:then>
+</f:if>
+
+</f:section>
+</html>

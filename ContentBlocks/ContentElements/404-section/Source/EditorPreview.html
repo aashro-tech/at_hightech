@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/9.3.2/schema.xsd"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<style>
+    .404 a {pointer-events: none;}
+</style>
+<!-- 404 Start -->
+<div class="container-fluid py-5 my-5 wow fadeIn 404" data-wow-delay="0.3s">
+    <div class="container text-center py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+
+                <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+
+                <f:if condition="{data.description}">
+                    <f:format.raw>{data.description}</f:format.raw>
+                </f:if>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 404 End -->
+
+</html>

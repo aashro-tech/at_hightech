@@ -1,0 +1,168 @@
+################
+### CONSTANT ###
+################
+
+plugin.at_hightech {
+  settings {
+    logoText = {$at_hightech.website.settings.logoText}
+    contactLabel = {$at_hightech.website.settings.contactLabel}
+    contactNo = {$at_hightech.website.settings.contactNo}
+  }
+}
+
+########################
+### MAIN PAGE OBJECT ###
+########################
+
+page = PAGE
+page {
+
+    // Set default page typenum
+    typeNum = 0
+
+    // Setup favion
+    // shortcutIcon = EXT:at_hightech/Resources/Public/Icons/logo.png
+    shortcutIcon = {$at_hightech.website.settings.favicon}
+
+    meta {
+        viewport = width=device-width, initial-scale=1.0
+    }
+
+    headerData{
+        10 = TEXT
+        10.value(
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+        )
+    }
+  # External Libraries (local files)
+  includeCSSLibs {
+
+    animate = EXT:at_hightech/Resources/Public/lib/animate/animate.min.css
+
+    owlcarousel = EXT:at_hightech/Resources/Public/lib/owlcarousel/assets/owl.carousel.min.css
+  }
+    // Initiate all the css-together
+    includeCSS {
+        fontawesome = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css
+        bootstrapicons = https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css
+        bootstrap = EXT:at_hightech/Resources/Public/css/bootstrap.min.css
+        style = EXT:at_hightech/Resources/Public/css/style.css
+        custom = EXT:at_hightech/Resources/Public/css/custom.css
+    }
+
+  # Main Template JS
+  includeJSFooter {
+
+    jquery = https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js
+
+    bootstrap = https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js
+    wow = EXT:at_hightech/Resources/Public/lib/wow/wow.min.js
+
+    easing = EXT:at_hightech/Resources/Public/lib/easing/easing.min.js
+
+    waypoints = EXT:at_hightech/Resources/Public/lib/waypoints/waypoints.min.js
+
+    owlcarousel = EXT:at_hightech/Resources/Public/lib/owlcarousel/owl.carousel.min.js
+
+    main = EXT:at_hightech/Resources/Public/javascript/main.js
+  }
+
+    // Let's start fluid_styled_content
+    10 = FLUIDTEMPLATE
+    10 {
+        layoutRootPath = {$at_hightech.website.paths.layoutRootPath}
+        partialRootPath = {$at_hightech.website.paths.partialRootPath}
+        templateRootPath = {$at_hightech.website.paths.templateRootPath}
+
+        // Let's automatically choose backend layout and template
+        file.stdWrap.cObject = CASE
+        file.stdWrap.cObject {
+            key {
+                data = levelfield:-1, backend_layout_next_level, slide
+                override.field = backend_layout
+            }
+
+            default = TEXT
+            default.value = {$at_hightech.website.paths.templateRootPath}Default.html
+
+            pagets__content = TEXT
+            pagets__content.value = {$at_hightech.website.paths.templateRootPath}Content.html
+
+            pagets__contact = TEXT
+            pagets__contact.value = {$at_hightech.website.paths.templateRootPath}Contact.html
+        }
+        settings < plugin.at_hightech.settings
+
+        // Generate menu with DataProcessing
+        dataProcessing {
+
+            // Main menu
+            101 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            101 {
+                levels = 5
+                special = directory
+                special.value = 1
+                expandAll = 1
+                includeSpacer = 0
+                as = MainMenu
+            }
+
+            // Breadcrumb menu
+            120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            120 {
+              special = rootline
+              special.range = 0|-1
+              as = breadcrumb
+
+              includeNotInMenu = 1
+            }
+        }
+    }
+}
+
+#########################
+### GLOBAL LIB OBJECT ###
+#########################
+
+lib {
+    // Define default content
+    content = CONTENT
+    content < styles.content.get
+
+    header < lib.content
+    header.select.where = colPos = 0
+    header.select.pidInList = 1
+
+    headerContent < lib.content
+    headerContent.select.where = colPos = 1
+
+    FooterPart1 < lib.content
+    FooterPart1.select.where = colPos = 2
+    FooterPart1.select.pidInList = 1
+
+    FooterPart2 < lib.content
+    FooterPart2.select.where = colPos = 3
+    FooterPart2.select.pidInList = 1
+
+    FooterPart3 < lib.content
+    FooterPart3.select.where = colPos = 4
+    FooterPart3.select.pidInList = 1
+
+    FooterPart4 < lib.content
+    FooterPart4.select.where = colPos = 5
+    FooterPart4.select.pidInList = 1
+    
+    footerCopyright < lib.content
+    footerCopyright.select.where  = colPos = 6
+    footerCopyright.select.pidInList = 1
+
+    contact < lib.content
+    contact.select.where  = colPos = 7
+
+    contactForm < lib.content
+    contactForm.select.where  = colPos = 8
+    contactForm.select.pidInList = 9
+
+}

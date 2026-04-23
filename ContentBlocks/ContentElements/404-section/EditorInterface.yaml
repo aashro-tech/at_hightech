@@ -1,0 +1,13 @@
+name: hightech/404
+title: HighTech – Error Element
+description: Shows error page content.
+
+prefixFields: false
+
+fields:
+
+  - identifier: description
+    type: Textarea
+    label: 'Error Description'
+    enableRichtext: true
+    richtextConfiguration: full

@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
+      data-namespace-typo3-fluid="true">
+
+<!-- Contact Start -->
+<f:variable name="marginSpace"><f:if condition="{data.pid} != 1"><f:then>mt-5</f:then><f:else>mb-5</f:else></f:if></f:variable>
+    <div class="container-fluid py-5 {marginSpace}">
+        <f:variable name="paddingSpace"><f:if condition="{data.pid} != 1">py-5</f:if></f:variable>
+        <div class="container {paddingSpace}">
+
+        <!-- Header (only if something exists) -->
+        <f:if condition="{data.header} || {data.subheader} || {data.details}">
+            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+
+                <f:if condition="{data.header}">
+                    <h5 class="text-primary">{data.header}</h5>
+                </f:if>
+
+                <f:if condition="{data.subheader}">
+                    <h1 class="mb-3">{data.subheader}</h1>
+                </f:if>
+
+                <f:if condition="{data.details}">
+                    <div class="mb-2">
+                        <f:format.html>{data.details}</f:format.html>
+                    </div>
+                </f:if>
+
+            </div>
+        </f:if>
+
+
+        <!-- Contact Items -->
+        <f:if condition="{data.collection} || {data.map} || {lib.contactForm}">
+        <div class="contact-detail position-relative p-5">
+            <f:if condition="{data.collection}">
+                <div class="row g-5 mb-5 justify-content-center">
+
+                    <f:for each="{data.collection}" as="item" iteration="iter">
+                        <f:if condition="{item.image.0} || {item.description}">
+
+                            <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay="{iter.cycle * 0.2}s">
+                                <div class="d-flex bg-light p-3 rounded">
+
+                                    <!-- Image -->
+                                    <f:if condition="{item.image.0}">
+                                        <div class="flex-shrink-0 btn-square bg-secondary rounded-circle d-flex align-items-center justify-content-center"
+                                             style="width: 64px; height: 64px;">
+                                            <f:image image="{item.image.0}" class="img-fluid rounded-circle" style="width:16px;height:16px;" />
+                                        </div>
+                                    </f:if>
+
+                                    <!-- Description -->
+                                    <f:if condition="{item.description}">
+                                        <div class="ms-3">
+                                            <f:format.html>{item.description}</f:format.html>
+                                        </div>
+                                    </f:if>
+
+                                </div>
+                            </div>
+
+                        </f:if>
+                    </f:for>
+
+                </div>
+            </f:if>
+
+            <!-- Map + Form -->
+            <f:if condition="{data.map}">
+            <div class="row g-5">
+
+                <!-- Map -->
+                <f:if condition="{data.map}">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay=".3s">
+                        <div class="p-5 h-100 rounded contact-map">
+                            <f:format.raw>
+                                <f:format.stripTags allowedTags="<iframe>">
+                                    <f:format.htmlentitiesDecode>{data.map}</f:format.htmlentitiesDecode>
+                                </f:format.stripTags>
+                            </f:format.raw>
+                        </div>
+                    </div>
+                </f:if>
+                
+                    <div class="{f:if(condition: data.map, then: 'col-lg-6', else: 'col-lg-12')} wow fadeIn" data-wow-delay=".5s">
+                        <div class="p-5 rounded contact-form">
+                            <f:cObject typoscriptObjectPath="lib.contactForm"/>
+                        </div>
+                    </div>
+
+            </div>
+            </f:if>
+        </div>
+        </f:if>
+    </div> 
+</div>
+<!-- Contact End -->
+
+</html>

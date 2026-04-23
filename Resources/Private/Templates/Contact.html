@@ -1,0 +1,51 @@
+<f:layout name="Contact" />
+
+<f:section name="Main">
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5">
+    <div class="container text-center py-5">
+
+        <!-- Dynamic Title -->
+        <h1 class="display-2 text-white mb-4 animated slideInDown">
+            {data.title}
+        </h1>
+
+        <!-- Dynamic Breadcrumb -->
+        <nav aria-label="breadcrumb" class="animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+
+                <f:for each="{breadcrumb}" as="item" iteration="i">
+
+                    <li class="breadcrumb-item {f:if(condition: item.current, then: 'active')}">
+
+                        <f:if condition="{item.current}">
+                            <f:then>
+                                {item.title}
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{i.isFirst}">
+                                        <f:then>
+                                                <a href="{item.link}" class="text-white">
+                                                    {item.title}
+                                                </a>
+                                        </f:then>
+                                        <f:else>
+                                            {item.title}
+                                        </f:else>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+
+                    </li>
+
+                </f:for>
+
+            </ol>
+        </nav>
+
+    </div>
+</div>
+<!-- Page Header End -->
+        <f:cObject typoscriptObjectPath="lib.contact"/>
+
+</f:section>

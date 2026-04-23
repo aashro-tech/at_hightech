@@ -1,0 +1,32 @@
+name: hightech/footer-contact-section
+title: HighTech – Footer Contact Section
+description: Displays footer contact information with icons and text.
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: contact_details
+    type: Collection
+    label: 'Contact Details'
+    description: 'Add contact items such as address, phone number, or email to display in the footer.'
+    fields:
+      - identifier: palette
+        type: Palette
+        label: 'Contact Item'
+        description: 'Each item includes an icon and corresponding contact information.'
+        fields:
+          - identifier: icon
+            type: File
+            label: 'Icon'
+            description: 'Upload an icon (e.g., location, phone, email).'
+            minitems: 1
+            maxitems: 1
+            allowed: common-image-types
+
+          - identifier: detail
+            type: Text
+            label: 'Contact Text'
+            description: 'Enter the contact detail (e.g., address, phone number, or email).'

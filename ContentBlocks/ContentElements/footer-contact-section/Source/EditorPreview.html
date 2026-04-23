@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+    
+<style> 
+    .bg-dark a{pointer-events: none;}.bg-dark {  background-color: #000103 !important;  padding: 10px;}
+</style>
+<div class="bg-dark">
+<f:if condition="{data.header}">
+    <a href="#" class="h3 text-secondary">{data.header}</a>
+</f:if>
+
+<f:if condition="{data.contact_details}">
+    <div class="text-white  mt-2 d-flex flex-column contact-link">
+
+        <f:for each="{data.contact_details}" as="item">
+
+            <!-- Render only if useful data exists -->
+            <f:if condition="{item.detail} || {item.icon.0}">
+
+                <!-- With link -->
+                <f:if condition="{item.icon.0.link}">
+                    <f:then>
+                        <f:link.typolink parameter="{item.icon.0.link}" class="py-3 text-light border-bottom border-primary d-flex align-items-center">
+                            
+                            <f:if condition="{item.icon.0}">
+                                <f:image image="{item.icon.0}" class="me-2" style="width:18px;height:18px;" />
+                            </f:if>
+
+                            <f:if condition="{item.detail}">
+                                <span>{item.detail}</span>
+                            </f:if>
+
+                        </f:link.typolink>
+                    </f:then>
+
+                    <!-- Without link (fallback) -->
+                    <f:else>
+                        <div class="py-3 text-light border-bottom border-primary d-flex align-items-center">
+
+                            <f:if condition="{item.icon.0}">
+                                <f:image image="{item.icon.0}" class="me-2" style="width:18px;height:18px;" />
+                            </f:if>
+
+                            <f:if condition="{item.detail}">
+                                <span>{item.detail}</span>
+                            </f:if>
+
+                        </div>
+                    </f:else>
+                </f:if>
+
+            </f:if>
+
+        </f:for>
+
+    </div>
+</f:if>
+</div>
+</html>

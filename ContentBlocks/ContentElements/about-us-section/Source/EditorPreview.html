@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/9.3.2/schema.xsd"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<style>
+    
+.btn-secondary {color: #000;background-color: #26d48c;border-color: #26d48c;}.about a {pointer-events: none;}
+</style>
+<!-- About Start -->
+<div class="container-fluid py-5 my-5 about">
+    <div class="container pt-5">
+        <div class="row g-5">
+
+            <!-- Image Left -->
+            <f:if condition="{data.layoutPosition} == 'left' && {data.aboutImage.0}">
+                <div class="col-lg-5 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".3s">
+                    <div class="h-100 position-relative">
+
+                        <f:image image="{data.aboutImage.0}" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;" />
+
+                        <f:if condition="{data.aboutImage.1}">
+                            <div class="position-absolute w-75" style="top: 25%; left: 25%;">
+                                <f:image image="{data.aboutImage.1}" class="img-fluid w-100 rounded" alt=""/>
+                            </div>
+                        </f:if>
+
+                    </div>
+                </div>
+            </f:if>
+
+            <!-- Description -->
+            <f:if condition="{data.description}">
+                <div class="col-lg-7 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".5s">
+                    <f:format.raw>{data.description}</f:format.raw>
+                </div>
+            </f:if>
+
+            <!-- Image Right -->
+            <f:if condition="{data.layoutPosition} == 'right' && {data.aboutImage.0}">
+                <div class="col-lg-5 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".3s">
+                    <div class="h-100 position-relative">
+
+                        <f:image image="{data.aboutImage.0}" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;" />
+
+                        <f:if condition="{data.aboutImage.1}">
+                            <div class="position-absolute w-75" style="top: 25%; left: 25%;">
+                                <f:image image="{data.aboutImage.1}" class="img-fluid w-100 rounded" alt=""/>
+                            </div>
+                        </f:if>
+
+                    </div>
+                </div>
+            </f:if>
+
+        </div>
+    </div>
+</div>
+<!-- About End -->
+</html>

@@ -1,0 +1,33 @@
+name: hightech/services
+title: HighTech – Services Content Element
+description: Displays a list of services with image and description.
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+
+  - identifier: subheader
+    useExistingField: true
+
+  - identifier: collection
+    type: Collection
+    label: 'Service Items'
+    description: 'Add service entries with image and description.'
+    fields:
+      
+      - identifier: image
+        type: File
+        label: 'Service Image'
+        description: 'Upload an image representing the service.'
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types
+
+      - identifier: description
+        type: Textarea
+        label: 'Service Description'
+        description: 'Enter a short description for the service.'
+        enableRichtext: true
+        richtextConfiguration: full

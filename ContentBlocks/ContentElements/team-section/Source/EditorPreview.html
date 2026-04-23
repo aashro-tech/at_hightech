@@ -1,0 +1,91 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<style>
+    .btn-secondary {  color: #000;  background-color: #26d48c;  border-color: #26d48c;}.team-carousel{display: flex;}.team-carousel a {pointer-events: none;}
+</style>
+<f:if condition="{data.team_member}">
+<div class="container-fluid py-5 mb-5 team">
+    <div class="container">
+        <f:if condition="{data.header} || {data.subheader}">
+            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                
+                <f:if condition="{data.header}">
+                    <h5 class="text-primary">{data.header}</h5>
+                </f:if>
+
+                <f:if condition="{data.subheader}">
+                    <h1>{data.subheader}</h1>
+                </f:if>
+
+            </div>
+        </f:if>
+        <div class="owl-carousel team-carousel wow fadeIn" data-wow-delay=".5s">
+
+            <f:for each="{data.team_member}" as="item">
+                <f:if condition="{item.image.0} || {item.description} || {item.social_media}">
+
+                    <div class="rounded team-item">
+                        <div class="team-content">
+                            <div class="team-img-icon">
+                                <f:if condition="{item.image.0}">
+                                    <div class="team-img rounded-circle">
+                                        <f:image image="{item.image.0}"
+                                                 class="img-fluid w-100 rounded-circle"
+                                                 alt="Team Member" />
+                                    </div>
+                                </f:if>
+                                <f:if condition="{item.description}">
+                                    <div class="team-name text-center py-3">
+                                        <f:format.raw>{item.description}</f:format.raw>
+                                    </div>
+                                </f:if>
+                                <f:if condition="{item.social_media}">
+                                    <div class="team-icon d-flex justify-content-center pb-4">
+
+                                        <f:for each="{item.social_media}" as="social">
+                                            <f:if condition="{social.social_media_icons.0}">
+                                                <f:if condition="{social.social_media_icons.0.link}">
+                                                    <f:then>
+                                                        <a href="{social.social_media_icons.0.link}"
+                                                           target="_blank"
+                                                           rel="noopener noreferrer"
+                                                           class="btn btn-square btn-secondary text-white rounded-circle m-1">
+
+                                                            <f:image image="{social.social_media_icons.0}"
+                                                                     class="img-fluid"
+                                                                     style="width:16px; height:16px;"
+                                                                     alt="icon" />
+                                                        </a>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <div class="btn btn-square btn-secondary text-white rounded-circle m-1 d-flex align-items-center justify-content-center">
+
+                                                            <f:image image="{social.social_media_icons.0}"
+                                                                     class="img-fluid"
+                                                                     style="width:16px; height:16px;"
+                                                                     alt="icon" />
+                                                        </div>
+                                                    </f:else>
+                                                </f:if>
+
+                                            </f:if>
+
+                                        </f:for>
+
+                                    </div>
+                                </f:if>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </f:if>
+
+            </f:for>
+
+        </div>
+    </div>
+</div>
+</f:if>
+
+</html>

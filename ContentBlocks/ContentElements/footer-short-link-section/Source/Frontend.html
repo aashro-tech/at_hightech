@@ -1,0 +1,46 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!-- Header -->
+<f:if condition="{data.header}">
+    <a href="javascript:;" class="h3 text-secondary">
+        {data.header}
+    </a>
+</f:if>
+
+<!-- Links -->
+<f:if condition="{data.quick_details}">
+    <div class="mt-4 d-flex flex-column help-link">
+
+        <f:for each="{data.quick_details}" as="item">
+
+            <!-- Only render if menu text exists -->
+            <f:if condition="{item.menus}">
+
+                <!-- With link -->
+                <f:if condition="{item.link}">
+                    <f:then>
+                        <f:link.typolink parameter="{item.link}" class="mb-2 text-white">
+                            <i class="fas fa-angle-right text-secondary me-2"></i>
+                            {item.menus}
+                        </f:link.typolink>
+                    </f:then>
+
+                    <!-- Without link -->
+                    <f:else>
+                        <div class="mb-2 text-white">
+                            <i class="fas fa-angle-right text-secondary me-2"></i>
+                            {item.menus}
+                        </div>
+                    </f:else>
+                </f:if>
+
+            </f:if>
+
+        </f:for>
+
+    </div>
+</f:if>
+
+</html>

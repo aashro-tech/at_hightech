@@ -1,0 +1,32 @@
+########################
+### General Settings ###
+########################
+
+# customsubcategory=100=LLL:EXT:at_hightech/Resources/Private/Language/locallang_db.xlf:header
+
+at_hightech {
+    website {
+        settings {
+
+            #cat = at_hightech/100/01; type=string; label=Favicon Icon
+            favicon = EXT:at_hightech/Resources/Public/Icons/logo.png
+
+            #cat = at_hightech/100/02; type=string; label=Logo Text
+            logoText = High<span class="text-secondary">Tech</span>
+            
+            #cat = at_hightech/100/03; type=string; label=Contact Label
+            contactLabel = Have any questions?
+
+            #cat = at_hightech/100/04; type=string; label=Contact number
+            contactNo = + 0123 456 7890
+
+        }
+
+        # Define paths for templates, layout and partial
+        paths {
+            templateRootPath = EXT:at_hightech/Resources/Private/Templates/
+            layoutRootPath = EXT:at_hightech/Resources/Private/Layouts/
+            partialRootPath = EXT:at_hightech/Resources/Private/Partials/
+        }
+    }
+}

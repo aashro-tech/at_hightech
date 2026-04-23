@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{data.collection}">
+
+    <!-- Project Start -->
+    <f:variable name="marginSpace"><f:if condition="{data.pid} != 1"><f:then>my-5</f:then><f:else>mb-5</f:else></f:if></f:variable>
+    <div class="container-fluid project py-5 {marginSpace}">
+        <f:variable name="paddingSpace"><f:if condition="{data.pid} != 1">py-5</f:if></f:variable>
+        <div class="container {paddingSpace}">
+
+            <!-- Section Header -->
+            <f:if condition="{data.header} || {data.subheader}">
+                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                    
+                    <f:if condition="{data.header}">
+                        <h5 class="text-primary">{data.header}</h5>
+                    </f:if>
+
+                    <f:if condition="{data.subheader}">
+                        <h1>{data.subheader}</h1>
+                    </f:if>
+
+                </div>
+            </f:if>
+
+            <!-- Project Grid -->
+            <div class="row g-5">
+
+                <f:for each="{data.collection}" as="item" iteration="iter">
+
+                    <!-- Only render valid items -->
+                    <f:if condition="{item.image.0} || {item.description}">
+
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".{iter.cycle}3s">
+                            <div class="project-item">
+                                <div class="project-img">
+
+                                    <!-- Image -->
+                                    <f:if condition="{item.image.0}">
+                                        <f:image image="{item.image.0}" class="img-fluid w-100 rounded" alt="Project Image" width="368"/>
+                                    </f:if>
+
+                                    <!-- Overlay Content -->
+                                    <f:if condition="{item.description}">
+                                        <div class="project-content">
+                                            <div class="text-center">
+
+                                                <!-- With link -->
+                                                <f:if condition="{item.image.0.link}">
+                                                    <f:then>
+                                                        <f:link.typolink parameter="{item.image.0.link}">
+                                                            <f:format.html>{item.description}</f:format.html>
+                                                        </f:link.typolink>
+                                                    </f:then>
+
+                                                    <!-- Without link -->
+                                                    <f:else>
+                                                        <a href="javascript:;">
+                                                            <f:format.html>{item.description}</f:format.html>
+                                                        </a>
+                                                    </f:else>
+                                                </f:if>
+
+                                            </div>
+                                        </div>
+                                    </f:if>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </f:if>
+
+                </f:for>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Project End -->
+
+</f:if>
+
+</html>

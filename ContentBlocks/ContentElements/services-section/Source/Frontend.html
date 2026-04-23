@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
+      data-namespace-typo3-fluid="true">
+<f:if condition="{data.collection}">
+    
+    <!-- Services Start -->
+    <f:variable name="marginSpace"><f:if condition="{data.pid} != 1"><f:then>my-5</f:then><f:else>mb-5</f:else></f:if></f:variable>
+    <div class="container-fluid services py-5 {marginSpace}">
+        <f:variable name="paddingSpace"><f:if condition="{data.pid} != 1">py-5</f:if></f:variable>
+        <div class="container {paddingSpace}">
+        
+            <!-- Section Header -->
+            <f:if condition="{data.header} || {data.subheader}">
+                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                    
+                    <f:if condition="{data.header}">
+                        <h5 class="text-primary">{data.header}</h5>
+                    </f:if>
+
+                    <f:if condition="{data.subheader}">
+                        <h1>{data.subheader}</h1>
+                    </f:if>
+
+                </div>
+            </f:if>
+
+            <!-- Services List -->
+            <div class="row g-5 services-inner">
+
+                <f:for each="{data.collection}" as="item" iteration="iter">
+
+                    <!-- Only render valid items -->
+                    <f:if condition="{item.image.0} || {item.description}">
+
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="{iter.cycle * 0.2}s">
+                            <div class="services-item bg-light">
+                                <div class="p-4 text-center services-content">
+                                    <div class="services-content-icon">
+
+                                        <!-- Image -->
+                                        <f:if condition="{item.image.0}">
+                                            <f:image image="{item.image.0}" class="img-fluid mb-4" alt="Service Image" height="112"/>
+                                        </f:if>
+
+                                        <!-- Description -->
+                                        <f:if condition="{item.description}">
+                                            <f:format.html>{item.description}</f:format.html>
+                                        </f:if>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </f:if>
+
+                </f:for>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Services End -->
+
+</f:if>
+
+</html>

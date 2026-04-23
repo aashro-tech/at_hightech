@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{data.counterItems}">
+    
+    <!-- Counter Start -->
+    <div class="container-fluid bg-secondary py-5">
+        <div class="container">
+            <div class="row">
+
+                <f:for each="{data.counterItems}" as="item" iteration="iter">
+
+                    <!-- Only render item if it has content -->
+                    <f:if condition="{item.counterNumber} || {item.counterLabel}">
+
+                        <div class="col-lg-3 wow fadeIn" data-wow-delay=".{iter.cycle}s">
+                            <div class="d-flex counter">
+
+                                <!-- Number -->
+                                <f:if condition="{item.counterNumber}">
+                                    <h1 class="me-3 text-primary counter-value">
+                                        {item.counterNumber}
+                                    </h1>
+                                </f:if>
+
+                                <!-- Label -->
+                                <f:if condition="{item.counterLabel}">
+                                    <h5 class="text-white mt-1">
+                                        {item.counterLabel}
+                                    </h5>
+                                </f:if>
+
+                            </div>
+                        </div>
+
+                    </f:if>
+
+                </f:for>
+
+            </div>
+        </div>
+    </div>
+    <!-- Counter End -->
+
+</f:if>
+
+</html>
