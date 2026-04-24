@@ -1,0 +1,35 @@
+name: hightech/topbar
+title: HighTech – Topbar Section
+description: Displays topbar content including icons, short text, and social media links.
+
+prefixFields: false
+
+fields:
+  - identifier: image
+    type: File
+    label: 'Icons'
+    description: 'Upload up to 2 small icons (e.g., location, email) to display in the topbar.'
+    extendedPalette: true
+    minitems: 0
+    maxitems: 2
+    allowed: common-image-types
+
+  - identifier: description
+    type: Textarea
+    label: 'Text / Information'
+    description: 'Enter short content such as address, email, or a small note.'
+    enableRichtext: true
+    richtextConfiguration: full
+
+  - identifier: social_media
+    type: Collection
+    label: 'Social Media Icons'
+    description: 'Add social media icons (e.g., Facebook, Twitter, LinkedIn) to display on the right side of the topbar.'
+    fields:
+      - identifier: social_media_icons
+        type: File
+        label: 'Social Media Icon'
+        description: 'Upload a single icon for the platform.'
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types

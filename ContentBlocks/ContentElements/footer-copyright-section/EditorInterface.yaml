@@ -1,8 +1,0 @@
-name: hightech/footer-copyright-section
-prefixFields: false
-fields:
-  - identifier: description
-    type: Textarea
-    label: 'Copyright Text'
-    enableRichtext: true
-    richtextConfiguration: full

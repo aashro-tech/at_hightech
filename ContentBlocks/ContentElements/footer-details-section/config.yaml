@@ -1,0 +1,27 @@
+name: hightech/footer-details-section
+title: HighTech – Footer Details Section
+description: Displays footer description text and social media icons.
+
+prefixFields: false
+
+fields:
+
+  - identifier: description
+    type: Textarea
+    label: 'Description'
+    description: 'Enter a short description about your company or website (e.g., mission, short intro, or tagline).'
+    enableRichtext: true
+    richtextConfiguration: full
+
+  - identifier: social_media
+    type: Collection
+    label: 'Social Media Icons'
+    description: 'Add social media icons (e.g., Facebook, Twitter, LinkedIn) to display in the footer.'
+    fields:
+      - identifier: social_media_icons
+        type: File
+        label: 'Social Media Icon'
+        description: 'Upload a single icon for each platform. Recommended size: 20x20px.'
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types

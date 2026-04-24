@@ -1,0 +1,72 @@
+name: hightech/testimonial
+title: HighTech – Testimonial Content Element
+description: Displays customer testimonials with image, details, rating, and feedback.
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+    label: 'Section Heading'
+    description: 'Enter the main title for the testimonial section (e.g., "What Our Clients Say").'
+
+  - identifier: subheader
+    useExistingField: true
+    label: 'Section Subheading'
+    description: 'Add a short introduction or subtitle below the main heading.'
+
+  - identifier: testimonial
+    type: Collection
+    label: 'Testimonial List'
+    description: 'Add multiple customer testimonials including image, name, role, rating, and feedback.'
+    fields:
+      
+      - identifier: image
+        type: File
+        label: 'Profile Image'
+        description: 'Upload a clear photo of the customer. Recommended size: 300x300px (square).'
+        extendedPalette: false
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types
+
+      - identifier: palette
+        type: Palette
+        label: 'Information'
+        description: 'Provide customer name, role/company, and rating.'
+        fields:
+          
+          - identifier: name
+            type: Text
+            label: 'Name'
+            description: 'Enter the full name of the customer.'
+
+          - identifier: role
+            type: Text
+            label: 'Role / Company'
+            description: 'Enter the customer’s role, designation, or company name.'
+
+          - identifier: rating
+            type: Select
+            renderType: selectSingle
+            label: 'Star Rating'
+            description: 'Select the rating given by the customer (1 to 5 stars).'
+            default: 'five'
+            items:
+              - label: '1 Star'
+                value: one
+              - label: '2 Stars'
+                value: two
+              - label: '3 Stars'
+                value: three
+              - label: '4 Stars'
+                value: four
+              - label: '5 Stars'
+                value: five
+
+      - identifier: description
+        type: Textarea
+        label: 'Message'
+        description: 'Enter the customer’s feedback or review (e.g., their experience or opinion about your service).'
+        enableRichtext: true
+        richtextConfiguration: full

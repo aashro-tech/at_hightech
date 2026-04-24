@@ -1,0 +1,52 @@
+name: hightech/team
+title: HighTech – Team Members Content Element
+description: Displays team members with profile image, details, and social media icons.
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+    label: 'Section Heading'
+    description: 'Enter the main title for the team section (e.g., "Our Team").'
+
+  - identifier: subheader
+    useExistingField: true
+    label: 'Section Subheading'
+    description: 'Add a short introduction or subtitle below the main heading.'
+
+  - identifier: team_member
+    type: Collection
+    label: 'List'
+    description: 'Add multiple team members with their profile image, details, and social media icons.'
+    fields:
+      
+      - identifier: image
+        type: File
+        label: 'Profile Image'
+        description: 'Upload a clear photo of the team member. Recommended size: 400x400px (square).'
+        extendedPalette: false
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types
+
+      - identifier: description
+        type: Textarea
+        label: 'Details'
+        description: 'Enter the team member’s name, role, and a short description (e.g., "John Doe – Web Developer").'
+        enableRichtext: true
+        richtextConfiguration: full
+
+      - identifier: social_media
+        type: Collection
+        label: 'Social Media Icons'
+        description: 'Add social media icons (e.g., Facebook, Twitter, LinkedIn) for this team member.'
+        fields:
+
+          - identifier: social_media_icons
+            type: File
+            label: 'Social Media Icon'
+            description: 'Upload a single icon for the platform. Recommended size: 20x20px.'
+            minitems: 1
+            maxitems: 1
+            allowed: common-image-types

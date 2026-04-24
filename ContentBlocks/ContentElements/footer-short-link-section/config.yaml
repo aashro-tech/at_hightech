@@ -1,0 +1,31 @@
+name: hightech/footer-link-section
+title: HighTech – Footer Link Section
+description: Displays a list of useful links in the footer (e.g., Quick Links or Help Links).
+
+prefixFields: false
+
+fields:
+  - identifier: header
+    useExistingField: true
+    label: 'Section Heading'
+    description: 'Enter the title for this link group (e.g., "Quick Links", "Useful Links", or "Help").'
+
+  - identifier: quick_details
+    type: Collection
+    label: 'Link List'
+    description: 'Add multiple links to display in this footer section.'
+    fields:
+      - identifier: palette
+        type: Palette
+        label: 'Link Entry'
+        description: 'Each entry includes link text and its destination URL.'
+        fields:
+          - identifier: menus
+            type: Text
+            label: 'Link Label'
+            description: 'Enter the visible text for the link (e.g., "Home", "About Us", "Services").'
+
+          - identifier: link
+            type: Link
+            label: 'Link Destination'
+            description: 'Select or enter the page URL where this link should navigate.'

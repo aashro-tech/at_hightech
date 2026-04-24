@@ -19,9 +19,22 @@
             <legend><f:translate key="form.legend" /></legend>
             <div class="tx-indexedsearch-form">
                 <label for="tx-indexedsearch-searchbox-sword"><f:translate key="form.searchFor" />:</label>
-                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="tx-indexedsearch-searchbox-sword" />
+                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="tx-indexedsearch-searchbox-sword" placeholder="Search..."/>
             </div>
-            
+            <f:if condition="{searchParams.extendedSearch}">
+                <f:if condition="{showTypeSearch}">
+                    <div class="tx-indexedsearch-search-for">
+                        <label for="tx-indexedsearch-selectbox-searchtype"><f:translate key="form.match" />:</label>
+                        <f:if condition="{allSearchTypes}">
+                            <f:form.select name="search[searchType]" options="{allSearchTypes}" value="{searchParams.searchType}" id="tx-indexedsearch-selectbox-searchtype" class="tx-indexedsearch-selectbox-searchtype" />
+                        </f:if>
+                        <f:if condition="{allDefaultOperands}">
+                            <f:form.select name="search[defaultOperand]" options="{allDefaultOperands}" value="{searchParams.defaultOperand}" id="tx-indexedsearch-selectbox-defaultoperand" class="tx-indexedsearch-selectbox-defaultoperand" />
+                        </f:if>
+                    </div>
+                </f:if>
+                
+            </f:if>
             <div class="tx-indexedsearch-search-submit">
                 <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="tx-indexedsearch-searchbox-button" />
             </div>

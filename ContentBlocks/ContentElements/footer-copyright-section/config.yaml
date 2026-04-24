@@ -1,0 +1,10 @@
+name: hightech/footer-copyright-section
+prefixFields: false
+
+fields:
+  - identifier: description
+    type: Textarea
+    label: 'Copyright / Footer Note'
+    description: 'Enter the copyright text or footer note (e.g., "© 2026 Your Company. All Rights Reserved."). You can also add links if needed.'
+    enableRichtext: true
+    richtextConfiguration: full

@@ -1,0 +1,26 @@
+name: hightech/counter
+title: HighTech – Counter Content Element
+description: Displays animated statistics with numbers and short labels.
+
+prefixFields: false
+
+fields:
+  - identifier: counterItems
+    type: Collection
+    label: 'List'
+    description: 'Add multiple counters to showcase key statistics (e.g., clients, projects, achievements).'
+    fields:
+      - identifier: counterData
+        type: Palette
+        label: 'Information'
+        fields:
+          - identifier: counterNumber
+            type: Number
+            format: integer
+            label: 'Number'
+            description: 'Enter the numeric value to display (e.g., 150, 2500). Only numbers are allowed.'
+
+          - identifier: counterLabel
+            type: Text
+            label: 'Label'
+            description: 'Enter a short title describing the number (e.g., Happy Clients, Completed Projects).'

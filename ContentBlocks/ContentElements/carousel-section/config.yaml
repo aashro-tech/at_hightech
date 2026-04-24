@@ -1,0 +1,27 @@
+name: hightech/carousel
+title: HighTech – Carousel Content Element
+description: Displays a homepage slider with images and overlay text content.
+
+prefixFields: false
+
+fields:
+  - identifier: collection
+    type: Collection
+    label: 'Slides'
+    description: 'Add multiple slides for the carousel. Each slide includes an image and text content displayed on top of it.'
+    fields:
+      
+      - identifier: image
+        type: File
+        label: 'Slide Background Image'
+        description: 'Upload the main image for this slide. Recommended size: 1920x800px for best display.'
+        minitems: 1
+        maxitems: 1
+        allowed: common-image-types
+
+      - identifier: description
+        type: Textarea
+        label: 'Slide Text Content'
+        description: 'Enter the text to display over the image (e.g., heading, subheading, or short message). You can use formatting if needed.'
+        enableRichtext: true
+        richtextConfiguration: full
