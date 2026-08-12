@@ -1,0 +1,5 @@
+name: aashro/at-hightech
+label: 'At Hightech'
+dependencies:
+  - georgringer/news
+  - typo3/indexed-search

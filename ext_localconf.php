@@ -1,6 +1,5 @@
 <?php
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:at_hightech/Configuration/PageTSconfig/setup.typoscript">');
 
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['full'] = 'EXT:at_hightech/Configuration/RTE/Full.yaml';
 

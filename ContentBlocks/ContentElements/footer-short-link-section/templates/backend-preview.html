@@ -1,49 +1,55 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<style>
-    .bg-dark a{pointer-events: none;}.bg-dark {  background-color: #000103 !important;  padding: 10px;}
-</style>
-<div class="bg-dark">
-<!-- Header -->
-<f:if condition="{data.header}">
-    <a href="#" class="h3 text-secondary">
-        {data.header}
-    </a>
-</f:if>
+<f:layout name="Preview"/>
 
-<!-- Links -->
-<f:if condition="{data.quick_details}">
-    <div class="mt-4 d-flex flex-column help-link">
+<f:section name="Content"> 
 
-        <f:for each="{data.quick_details}" as="item">
+    <style>
+        .bg-dark a{pointer-events: none;}.bg-dark {  background-color: #000103 !important;  padding: 10px;}
+    </style>
+    <div class="bg-dark">
+    <!-- Header -->
+    <f:if condition="{data.header}">
+        <a href="#" class="h3 text-secondary">
+            {data.header}
+        </a>
+    </f:if>
 
-            <!-- Only render if menu text exists -->
-            <f:if condition="{item.menus}">
+    <!-- Links -->
+    <f:if condition="{data.quick_details}">
+        <div class="mt-4 d-flex flex-column help-link">
 
-                <!-- With link -->
-                <f:if condition="{item.link}">
-                    <f:then>
-                        <f:link.typolink parameter="{item.link}" class="mb-2 text-white">
-                            <i class="fas fa-angle-right text-secondary me-2"></i>
-                            {item.menus}
-                        </f:link.typolink>
-                    </f:then>
+            <f:for each="{data.quick_details}" as="item">
 
-                    <!-- Without link -->
-                    <f:else>
-                        <div class="mb-2 text-white">
-                            <i class="fas fa-angle-right text-secondary me-2"></i>
-                            {item.menus}
-                        </div>
-                    </f:else>
+                <!-- Only render if menu text exists -->
+                <f:if condition="{item.menus}">
+
+                    <!-- With link -->
+                    <f:if condition="{item.link}">
+                        <f:then>
+                            <f:link.typolink parameter="{item.link}" class="mb-2 text-white">
+                                <i class="fas fa-angle-right text-secondary me-2"></i>
+                                {item.menus}
+                            </f:link.typolink>
+                        </f:then>
+
+                        <!-- Without link -->
+                        <f:else>
+                            <div class="mb-2 text-white">
+                                <i class="fas fa-angle-right text-secondary me-2"></i>
+                                {item.menus}
+                            </div>
+                        </f:else>
+                    </f:if>
+
                 </f:if>
 
-            </f:if>
+            </f:for>
 
-        </f:for>
-
+        </div>
+    </f:if>
     </div>
-</f:if>
-</div>
+</f:section>
+
 </html>

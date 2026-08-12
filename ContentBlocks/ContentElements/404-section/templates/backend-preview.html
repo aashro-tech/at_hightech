@@ -2,8 +2,11 @@
       xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/9.3.2/schema.xsd"
       xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
       data-namespace-typo3-fluid="true">
+<f:layout name="Preview"/>
+
+<f:section name="Content">       
 <style>
-    .404 a {pointer-events: none;}
+    .404 a {pointer-events: none;} .btn.btn-secondary.rounded-pill.px-5.py-3.text-white { border-radius: 30px;}
 </style>
 <!-- 404 Start -->
 <div class="container-fluid py-5 my-5 wow fadeIn 404" data-wow-delay="0.3s">
@@ -21,6 +24,7 @@
         </div>
     </div>
 </div>
+</f:section>
 <!-- 404 End -->
 
 </html>

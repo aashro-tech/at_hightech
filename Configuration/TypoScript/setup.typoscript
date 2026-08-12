@@ -1,8 +1,5 @@
 # Includes Page Configuration
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:at_hightech/Configuration/TypoScript/Page" extensions="typoscript">
-
-# Include Form Configuration
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:at_hightech/Configuration/TypoScript/Extensions/Form/" extensions="typoscript">
+@import 'EXT:at_hightech/Configuration/TypoScript/Page/page.typoscript'
 
 plugin.tx_news {
   view {

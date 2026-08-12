@@ -218,5 +218,19 @@ fieldset {
     footer .copyright{
         flex-direction: column;
     }
+
+    .p-5.rounded.contact-form {
+        padding: 1rem !important;
+    }
+
+    .p-5.h-100.rounded.contact-map {
+        padding: 1rem !important;
+    }
+
+        .contact-detail .row.g-5 {
+          margin: -49px;
+        }
+
 }
 /* Search page style END */
+

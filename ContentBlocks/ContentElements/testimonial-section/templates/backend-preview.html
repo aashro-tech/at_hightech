@@ -1,95 +1,99 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<style>
-    .text-secondary {  color: #26d48c !important;}
-</style>
-<f:if condition="{data.testimonial}">
+<f:layout name="Preview"/>
 
-<!-- Testimonial Start -->
-<div class="container-fluid testimonial py-5 mb-5">
-    <div class="container">
+<f:section name="Content">      
+    <style>
+        .text-secondary {  color: #26d48c !important;}
+    </style>
+    <f:if condition="{data.testimonial}">
 
-        <!-- Section Header -->
-        <f:if condition="{data.header} || {data.subheader}">
-            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                
-                <f:if condition="{data.header}">
-                    <h5 class="text-primary">{data.header}</h5>
-                </f:if>
+    <!-- Testimonial Start -->
+    <div class="container-fluid testimonial py-5 mb-5">
+        <div class="container">
 
-                <f:if condition="{data.subheader}">
-                    <h1>{data.subheader}</h1>
-                </f:if>
+            <!-- Section Header -->
+            <f:if condition="{data.header} || {data.subheader}">
+                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                    
+                    <f:if condition="{data.header}">
+                        <h5 class="text-primary">{data.header}</h5>
+                    </f:if>
 
-            </div>
-        </f:if>
+                    <f:if condition="{data.subheader}">
+                        <h1>{data.subheader}</h1>
+                    </f:if>
 
-        <!-- Carousel -->
-        <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">
+                </div>
+            </f:if>
 
-            <f:for each="{data.testimonial}" as="item">
+            <!-- Carousel -->
+            <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">
 
-                <!-- Only render valid testimonial -->
-                <f:if condition="{item.name} || {item.description} || {item.image.0}">
+                <f:for each="{data.testimonial}" as="item">
 
-                    <div class="testimonial-item border p-4">
+                    <!-- Only render valid testimonial -->
+                    <f:if condition="{item.name} || {item.description} || {item.image.0}">
 
-                        <!-- Top Section -->
-                        <div class="d-flex align-items-center">
+                        <div class="testimonial-item border p-4">
 
-                            <!-- Image -->
-                            <f:if condition="{item.image.0}">
-                                <div>
-                                    <f:image image="{item.image.0}" alt="{item.name}" />
-                                </div>
-                            </f:if>
+                            <!-- Top Section -->
+                            <div class="d-flex align-items-center">
 
-                            <!-- Info -->
-                            <div class="ms-4">
-
-                                <f:if condition="{item.name}">
-                                    <h4 class="text-secondary">{item.name}</h4>
-                                </f:if>
-
-                                <f:if condition="{item.role}">
-                                    <p class="m-0 pb-3">{item.role}</p>
-                                </f:if>
-
-                                <!-- Rating -->
-                                <f:if condition="{item.rating}">
-                                    <div class="d-flex pe-5">
-
-                                        <f:for each="{0:1,1:2,2:3,3:4,4:5}" as="star" iteration="i">
-                                            <f:if condition="{i.cycle} <= {item.rating}">
-                                                <i class="fas fa-star me-1 text-primary"></i>
-                                            </f:if>
-                                        </f:for>
-
+                                <!-- Image -->
+                                <f:if condition="{item.image.0}">
+                                    <div>
+                                        <f:image image="{item.image.0}" alt="{item.name}" />
                                     </div>
                                 </f:if>
 
+                                <!-- Info -->
+                                <div class="ms-4">
+
+                                    <f:if condition="{item.name}">
+                                        <h4 class="text-secondary">{item.name}</h4>
+                                    </f:if>
+
+                                    <f:if condition="{item.role}">
+                                        <p class="m-0 pb-3">{item.role}</p>
+                                    </f:if>
+
+                                    <!-- Rating -->
+                                    <f:if condition="{item.rating}">
+                                        <div class="d-flex pe-5">
+
+                                            <f:for each="{0:1,1:2,2:3,3:4,4:5}" as="star" iteration="i">
+                                                <f:if condition="{i.cycle} <= {item.rating}">
+                                                    <i class="fas fa-star me-1 text-primary"></i>
+                                                </f:if>
+                                            </f:for>
+
+                                        </div>
+                                    </f:if>
+
+                                </div>
+
                             </div>
+
+                            <!-- Description -->
+                            <f:if condition="{item.description}">
+                                <div class="border-top mt-4 pt-3">
+                                    <f:format.raw>{item.description}</f:format.raw>
+                                </div>
+                            </f:if>
 
                         </div>
 
-                        <!-- Description -->
-                        <f:if condition="{item.description}">
-                            <div class="border-top mt-4 pt-3">
-                                <f:format.raw>{item.description}</f:format.raw>
-                            </div>
-                        </f:if>
+                    </f:if>
 
-                    </div>
+                </f:for>
 
-                </f:if>
-
-            </f:for>
-
+            </div>
         </div>
     </div>
-</div>
 <!-- Testimonial End -->
-
 </f:if>
+
+</f:section>
 
 </html>

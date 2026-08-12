@@ -12,10 +12,10 @@
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^13.4",
-        "typo3/cms-indexed-search": "^13.4",
-        "friendsoftypo3/content-blocks": "^1.0.0",
-        "georgringer/news": "^14.0.1"
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-indexed-search": "^14.3",
+        "friendsoftypo3/content-blocks": "^2.0",
+        "georgringer/news": "^14.0.3"
     },
     "autoload": {
         "psr-4": {

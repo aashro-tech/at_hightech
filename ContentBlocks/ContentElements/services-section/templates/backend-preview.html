@@ -1,68 +1,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
       xmlns:f="https://viewhelpers.fluidtypo3.org/typo3/cms-fluid/latest/schema.xsd"
       data-namespace-typo3-fluid="true">
-<style>
-    .services a {pointer-events: none;}.bg-light {  background-color: rgb(80, 80, 80) !important;}.services-item img{filter: brightness(100);}.btn-secondary {  color: #000;  background-color: #26d48c;  border-color: #26d48c;}
-</style>
-<f:if condition="{data.collection}">
-    
-    <!-- Services Start -->
-    <div class="container-fluid services py-5 mb-5">
-        <div class="container">
+<f:layout name="Preview"/>
 
-            <!-- Section Header -->
-            <f:if condition="{data.header} || {data.subheader}">
-                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                    
-                    <f:if condition="{data.header}">
-                        <h5 class="text-primary">{data.header}</h5>
-                    </f:if>
+<f:section name="Content">
 
-                    <f:if condition="{data.subheader}">
-                        <h1>{data.subheader}</h1>
-                    </f:if>
+    <style>
+        .services a {pointer-events: none;}.bg-light {  background-color: rgb(80, 80, 80) !important;}.services-item img{filter: brightness(100);}.btn-secondary {  color: #000;  background-color: #26d48c;  border-color: #26d48c;}
+        .services-content-icon .text-white.btn.rounded-pill {border-radius: 27px;}
+    </style>
+    <f:if condition="{data.collection}">
+        
+        <!-- Services Start -->
+        <div class="container-fluid services py-5 mb-5">
+            <div class="container">
 
-                </div>
-            </f:if>
+                <!-- Section Header -->
+                <f:if condition="{data.header} || {data.subheader}">
+                    <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                        
+                        <f:if condition="{data.header}">
+                            <h5 class="text-primary">{data.header}</h5>
+                        </f:if>
 
-            <!-- Services List -->
-            <div class="row g-5 services-inner">
+                        <f:if condition="{data.subheader}">
+                            <h1>{data.subheader}</h1>
+                        </f:if>
 
-                <f:for each="{data.collection}" as="item" iteration="iter">
+                    </div>
+                </f:if>
 
-                    <!-- Only render valid items -->
-                    <f:if condition="{item.image.0} || {item.description}">
+                <!-- Services List -->
+                <div class="row g-5 services-inner">
 
-                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="{iter.cycle * 0.2}s">
-                            <div class="services-item bg-light">
-                                <div class="p-4 text-center services-content">
-                                    <div class="services-content-icon">
+                    <f:for each="{data.collection}" as="item" iteration="iter">
 
-                                        <!-- Image -->
-                                        <f:if condition="{item.image.0}">
-                                            <f:image image="{item.image.0}" class="img-fluid mb-4" alt="Service Image" height="112"/>
-                                        </f:if>
+                        <!-- Only render valid items -->
+                        <f:if condition="{item.image.0} || {item.description}">
 
-                                        <!-- Description -->
-                                        <f:if condition="{item.description}">
-                                            <f:format.raw>{item.description}</f:format.raw>
-                                        </f:if>
+                            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="{iter.cycle * 0.2}s">
+                                <div class="services-item bg-light">
+                                    <div class="p-4 text-center services-content">
+                                        <div class="services-content-icon">
 
+                                            <!-- Image -->
+                                            <f:if condition="{item.image.0}">
+                                                <f:image image="{item.image.0}" class="img-fluid mb-4" alt="Service Image" height="112"/>
+                                            </f:if>
+
+                                            <!-- Description -->
+                                            <f:if condition="{item.description}">
+                                                <f:format.raw>{item.description}</f:format.raw>
+                                            </f:if>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </f:if>
+                        </f:if>
 
-                </f:for>
+                    </f:for>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
-    <!-- Services End -->
+        <!-- Services End -->
+    </f:if>
 
-</f:if>
+</f:section>    
 
 </html>
